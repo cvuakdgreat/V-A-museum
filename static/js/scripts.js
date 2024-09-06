@@ -144,8 +144,6 @@ function createScrollItems(records) {
         });
 }
 
-
-
 // Debounce function to limit rate of event handling
 function debounce(func, wait) {
     let timeout;
@@ -153,6 +151,16 @@ function debounce(func, wait) {
         clearTimeout(timeout);
         timeout = setTimeout(() => func.apply(this, args), wait);
     };
+}
+
+// Function for the menu toggle
+function menutoggle() {
+    const MenuItems = document.getElementById("MenuItems");
+    if (MenuItems.style.maxHeight == "0px") {
+        MenuItems.style.maxHeight = "200px";
+    } else {
+        MenuItems.style.maxHeight = "0px";
+    }
 }
 
 // Initialize the app
@@ -172,4 +180,8 @@ async function initializeApp() {
     document.getElementById('loading').remove();
 }
 
-document.addEventListener('DOMContentLoaded', initializeApp);
+// Add event listener for DOM content loaded and run initializeApp
+document.addEventListener('DOMContentLoaded', () => {
+    initializeApp();
+    document.getElementById('menuToggle').addEventListener('click', menutoggle);
+});

@@ -91,7 +91,7 @@ input[type="range"] {
 }
 
 /* Media queries for responsiveness */
-@media only screen and (max-width: 800px) {
+/* @media only screen and (max-width: 800px) {
     nav ul {
         position: absolute;
         top: 70px;
@@ -100,7 +100,7 @@ input[type="range"] {
         width: 100%;
         overflow: hidden;
         transition: max-height 0.5s;
-        max-height: 0; /* Ensure initial state for smooth toggle */
+        max-height: 0; 
     }
 
     nav ul li {
@@ -145,4 +145,4 @@ input[type="range"] {
     .cart-info p {
         display: none;
     }
-}
+} */
