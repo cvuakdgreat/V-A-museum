@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    Gallery
+{% endblock %}
+{% block extra_styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Year Slider -->
+    <input type="range" id="yearRange">
+    <label for="yearRange" id="yearLabel">Year: -</label>
+
+    <!-- Object Type Buttons Container -->
+    <div id="objectTypeButtons" class="object-type-buttons"></div>
+
+    <div class="row" id="scrollContainer">
+        <!-- Dynamically created grid items will go here -->
+    </div>
+
+    
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+{% endblock %}

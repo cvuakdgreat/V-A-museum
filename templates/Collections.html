@@ -1,0 +1,47 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    Collection
+{% endblock %}
+
+{% block content %}
+<div class="small-container">
+    <div class="row row-2">
+        <h2 class="title">Artefacts</h2>
+    </div>
+    <div class="row">
+        {% for record in records %}
+            {% set title = record.get('_primaryTitle') or record.get('displayName') %}
+            {% if title %}
+            <div class="col-4">
+                <a href="{{ url_for('product_details', id=record['systemNumber']) }}">
+                    {% if record['_images'].get('_primary_thumbnail') %}
+                        <img src="{{ record['_images']['_primary_thumbnail'] }}" alt="{{ title }}">
+                    {% else %}
+                        <img src="{{ url_for('static', filename='images/coming_soon.png') }}" alt="No Image Available">
+                    {% endif %}
+                </a>
+                <h4>{{ title }}</h4>
+                <p>{{ record['objectType'] }} by {{ record['_primaryMaker'].get('name', 'Unknown Maker') }}<br>
+                    Date: {{ record['_primaryDate'] if record['_primaryDate'] else "Unknown Date" }}</p>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <!-- Pagination Controls -->
+    <div class="pagination">
+        {% if page > 1 %}
+        <a href="{{ url_for('collections', page=1) }}" aria-label="First Page">First</a>
+        <a href="{{ url_for('collections', page=page-1) }}" aria-label="Previous Page">&laquo; Previous</a>
+        {% endif %}
+        {% for p in page_range %}
+        <a href="{{ url_for('collections', page=p) }}" class="{{ 'active' if p == page else '' }}" aria-label="Page {{ p }}">{{ p }}</a>
+        {% endfor %}
+        {% if page < total_pages %}
+        <a href="{{ url_for('collections', page=page+1) }}" aria-label="Next Page">Next &raquo;</a>
+        <a href="{{ url_for('collections', page=total_pages) }}" aria-label="Last Page">Last</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

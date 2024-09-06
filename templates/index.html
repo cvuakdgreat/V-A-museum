@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}Museum Collection{% endblock %}
+    </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+        <!-- Block for additional CSS -->
+        {% block extra_styles %}
+        {% endblock %}
+</head>
+
+
+<body>
+    
+    <div class="header">
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo.png') }}" alt="logo" width="125px"></a>
+                </div>
+                <nav>
+                    <ul id="MenuItems">
+                        <li><a href="{{ url_for('index') }}">Home</a></li>
+                        <li><a href="{{ url_for('gallery') }}">Gallery</a></li>
+                        <li><a href="{{ url_for('collections') }}">Collection</a></li>
+                    </ul>
+                </nav>
+                <img src="{{ url_for('static', filename='images/menu.png') }}" class="menu-icon" onclick="menutoggle()">
+
+            </div>
+
+
+
+        </div>
+    </div>
+
+   
+    {% block content %}
+    <!-- Featured feature -->
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 text-center">
+                <h2 class="title">Explore the gallery in style</h2>
+                <a href="{{ url_for('gallery') }}">
+                    <img src="{{ url_for('static', filename='images/click.png') }}" alt="Collection" class="img-fluid">
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                
+                <div class="footer-col-3">
+                    <h3>Champion V&A</h3>
+                    <ul>
+                        <li>about us</li>
+                        <li>contact us</li>
+                        <li>Research</li>
+                        <li>press</li>
+                    </ul>
+                </div>
+                <div class="footer-col-4">
+                    <h3>Join & support</h3>
+                    <ul>
+                        <li>Membership</li>
+                        <li>Corporate partnership</li>
+                        <li>Future Plan</li>
+                        <li>Donate</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p class="copyright">Champion V&A &copy; 2024</p>
+        </div>
+    </div>
+
+
+    {% block scripts %}
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    {% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    Product Details
+{% endblock %}
+
+{% block extra_styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/product_details.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="product-details">
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+                {% set imageUrl = record._images._iiif_image_base_url %}
+                {% if imageUrl %}
+                    <img src="{{ imageUrl }}full/!600,400/0/default.jpg" alt="{{ record._primaryTitle if record._primaryTitle else 'No Image Available' }}" class="product-image">
+                {% else %}
+                    <img src="{{ url_for('static', filename='images/coming_soon.png') }}" alt="No Image Available" class="product-image">
+                {% endif %}
+            </div>
+            <div class="col-2">
+                <h2>
+                    {{ record._primaryTitle if record._primaryTitle else record._currentLocation.displayName if record._currentLocation.displayName else "Unknown Title" }}
+                </h2>
+                <p><strong>Type:</strong> {{ record.objectType if record.objectType else "Unknown Type" }}</p>
+                <p><strong>Maker:</strong> {{ record._primaryMaker.name if record._primaryMaker else "Anonymous" }}</p>
+                <p><strong>Date:</strong> {{ record._primaryDate if record._primaryDate else "Unknown Date" }}</p>
+                <p><strong>Location:</strong> {{ record._currentLocation.displayName if record._currentLocation else "Unknown Location" }}</p>
+                <p><strong>Accession Number:</strong> {{ record.accessionNumber if record.accessionNumber else "Unknown Accession Number" }}</p>
+                <p><strong>System Number:</strong> {{ record.systemNumber if record.systemNumber else "Unknown System Number" }}</p>
+                <p><strong>Origin:</strong> {{ record._primaryPlace if record._primaryPlace else "Unknown Place of Origin" }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

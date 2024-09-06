@@ -1,0 +1,23 @@
+/* Add extra margin or padding around the container */
+.container {
+
+    margin-bottom: 40px; 
+    padding: 20px; 
+}
+
+/* Ensure images display at full size of 600x400 pixels */
+.product-image {
+    width: 100%; /* Makes the image responsive */
+    max-width: 600px; /* Ensures the image doesn't exceed 600px width */
+    height: auto; /* Maintains aspect ratio */
+}
+
+/* Ensure proper spacing and alignment */
+.product-details .row {
+    margin-bottom: 30px; /* Adjust spacing between rows */
+}
+
+.product-details h2 {
+    margin-bottom: 20px; /* Adjust spacing below the title */
+}
+

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}Template{% endblock %}
+    </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+
+<body>
+    
+    <div class="header">
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo.png') }}" alt="logo" width="125px"></a>
+                </div>
+                <nav>
+                    <ul id="MenuItems">
+                        <li><a href="{{ url_for('index') }}">Home</a></li>
+                        <li><a href="{{ url_for('gallery') }}">Collection</a></li>
+                        <li><a href="{{ url_for('collections') }}">Collection</a></li>
+                        <li><a href="{{ url_for('products') }}">About Us</a></li>
+                    </ul>
+                </nav>
+                <img src="{{ url_for('static', filename='images/menu.png') }}" class="menu-icon" onclick="menutoggle()">
+
+            </div>
+
+            <div class="row">
+                <div class="col-2">
+                    <h1>Explore museum </h1>
+                    <!-- <p> A book is a version of the world. <br>  If you do not like it, ignore it; <br> or offer your own version in return. </p> -->
+                    <!-- <a href="account.php" class="btn">Explore Now &#8594;</a> -->
+                </div>
+                <div class="col-2">
+                    <img src="images/image1.png">
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+	{% block content%}
+
+    <!-- Featured Collections -->
+    <div class="small-container">
+        <h2 class="title">Featured Collections</h2>
+        <div class="row">
+            {% for record in records %}
+            <div class="col-4">
+                <a href="{{ url_for('product_details', id=record.id) }}"><img src="{{ url_for('static', filename='images/product-1.jpg') }}" alt="{{ record.title }}"></a>
+                <h4>{{ record.title }}</h4>
+                <p>By: {{ record.author }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+  
+    {% endblock %}
+    <!-- Footer
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                
+                <div class="footer-col-3">
+                    <h3>Champion V&A</h3>
+                    <ul>
+                        <li>about us</li>
+                        <li>contact us</li>
+                        <li>Research</li>
+                        <li>press</li>
+                    </ul>
+                </div>
+                <div class="footer-col-4">
+                    <h3>Join & support</h3>
+                    <ul>
+                        <li>Membership</li>
+                        <li>Corporate partnership</li>
+                        <li>Future Plan</li>
+                        <li>Donate</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p class="copyright">Champion V&A &copy; 2024</p>
+        </div>
+    </div> -->
+
+
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+
+</html>

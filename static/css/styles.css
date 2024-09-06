@@ -1,0 +1,148 @@
+/* Inherit global styles */
+
+
+/* Specific styling for the new page */
+input[type="range"] {
+    width: 80%;
+    margin-bottom: 20px;
+}
+
+.scroll-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 20px;
+    width: 100%;
+    padding: 20px 0;
+    box-sizing: border-box;
+    margin: 0 auto;  /* Centering the scroll container */
+}
+
+.scroll-item {
+    background-color: #f9f9f9;  
+    border: 1px solid #ccc;
+    border-radius: 5px; 
+    transition: transform 0.3s;
+    padding: 10px;
+    margin-bottom: 20px; /* Space between rows */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scroll-item:hover {
+    transform: scale(1.05);
+    border-color: #ff523b;  /* Match hover effect with main site's theme color */
+}
+
+.scroll-item img {
+    width: 100px;  /* Set width to 100px */
+    height: 100px; /* Set height to 100px */
+    object-fit: cover; /* Ensures the image covers the dimensions without distortion */
+}
+
+/* Loading indicator style */
+#loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 20px 40px;
+    border-radius: 5px;
+    font-size: 18px;
+    text-align: center;
+    z-index: 1000;
+}
+
+/* Error and no data message styles */
+#error, #no-data {
+    color: red;
+    font-size: 18px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Object type buttons consistent with the main site */
+.object-type-buttons {
+    margin: 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.object-type-button {
+    padding: 10px 15px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+    outline: none;
+    border-radius: 30px;  /* Consistent with the main site's button style */
+}
+
+.object-type-button.active,
+.object-type-button:hover {
+    background-color: #ff523b;  /* Use the main site's theme color */
+    border-color: #ff523b;  /* Match border color */
+    color: white;  /* Make text white on active/hover */
+}
+
+/* Media queries for responsiveness */
+@media only screen and (max-width: 800px) {
+    nav ul {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        background: #333;
+        width: 100%;
+        overflow: hidden;
+        transition: max-height 0.5s;
+        max-height: 0; /* Ensure initial state for smooth toggle */
+    }
+
+    nav ul li {
+        display: block;
+        margin-right: 0;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    nav ul li a {
+        color: white;
+    }
+
+    .menu-icon {
+        display: block;
+        cursor: pointer;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .row {
+        text-align: center;
+    }
+
+    .col-2, .col-3, .col-4 {
+        flex-basis: 100%;
+    }
+
+    .single-product .row {
+        text-align: left;
+    }
+
+    .single-product .col-2 {
+        padding: 20px 0;
+    }
+
+    .single-product h1 {
+        font-size: 26px;
+        line-height: 32px;
+    }
+
+    .cart-info p {
+        display: none;
+    }
+}

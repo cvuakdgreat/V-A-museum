@@ -1,0 +1,3 @@
+# Ensure all text files use LF in the repository, but CRLF on Windows in working directory
+*.css text eol=lf
+*.json text eol=lf
